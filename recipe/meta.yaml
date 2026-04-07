@@ -41,9 +41,7 @@ about:
     Exporter rather than implementing their own import method because Exporter
     provides a flexible interface with an implementation optimised for the
     common case.
-  # Single SPDX id: compound "A OR B" can break cmd.exe if embedded in Windows batch
-  # without quoting. Dual terms are documented in recipe/LICENSE.
-  license: Artistic-1.0-Perl
+  license: GPL-1.0-or-later OR Artistic-1.0-Perl
   license_family: OTHER
   license_file:
     - LICENSE
