@@ -16,12 +16,12 @@ build:
     - {{ pin_subpackage('perl-exporter', max_pin="x.x") }}
 
 requirements:
-  build:
+  build:    # [unix]
     - make  # [unix]
   host:
     - perl {{ perl }}
-    - perl-carp
-    - perl-extutils-makemaker
+    - perl-carp 1.50
+    - perl-extutils-makemaker 7.78
   run:
     - perl
     - perl-carp
