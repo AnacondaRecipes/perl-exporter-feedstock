@@ -17,11 +17,11 @@ build:
 
 requirements:
   build:
-    - make
+    - make  # [unix]
   host:
     - perl {{ perl }}
-    - perl-carp 1.38
-    - perl-extutils-makemaker 7.3506
+    - perl-carp
+    - perl-extutils-makemaker
   run:
     - perl
     - perl-carp
@@ -32,16 +32,19 @@ test:
     - Exporter::Heavy
 
 about:
-  home: "https://metacpan.org/pod/Exporter"
-  license: "GPL-1.0-or-later OR Artistic-1.0-Perl"
-  license_family: Other
-  license_file: LICENSE
-  summary: "Implements default import method for modules."
+  home: https://metacpan.org/release/Exporter
+  dev_url: https://github.com/Perl/perl5/tree/blead/dist/Exporter
+  doc_url: https://metacpan.org/pod/Exporter
   description: |
     The Exporter module implements an import method which allows a module to
     export functions and variables to its users' namespaces. Many modules use
     Exporter rather than implementing their own import method because Exporter
     provides a flexible interface with an implementation optimised for the
     common case.
-  doc_url: https://metacpan.org/pod/Exporter
-  dev_url: "https://github.com/Perl/perl5/tree/blead/dist/Exporter"
+  # Single SPDX id: compound "A OR B" can break cmd.exe if embedded in Windows batch
+  # without quoting. Dual terms are documented in recipe/LICENSE.
+  license: Artistic-1.0-Perl
+  license_family: OTHER
+  license_file:
+    - LICENSE
+  summary: Implements default import method for modules.
