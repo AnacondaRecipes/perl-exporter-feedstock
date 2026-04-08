@@ -1,0 +1,48 @@
+{% set name = "perl-exporter" %}
+{% set version = "5.79" %}
+{% set sha256 = "229459746e6933aabad983aafee125a9fad492db49af2887509eb4311287d7a2" %}
+
+package:
+  name: {{ name }}
+  version: {{ version }}
+
+source:
+  url: https://cpan.metacpan.org/authors/id/T/TO/TODDR/Exporter-{{ version }}.tar.gz
+  sha256: {{ sha256 }}
+
+build:
+  number: 0
+  run_exports:
+    - {{ pin_subpackage('perl-exporter', max_pin="x.x") }}
+
+requirements:
+  build:    # [unix]
+    - make  # [unix]
+  host:
+    - perl {{ perl }}
+    - perl-carp 1.50
+    - perl-extutils-makemaker 7.78
+  run:
+    - perl
+    - perl-carp
+
+test:
+  imports:
+    - Exporter
+    - Exporter::Heavy
+
+about:
+  home: https://metacpan.org/release/Exporter
+  dev_url: https://github.com/Perl/perl5/tree/blead/dist/Exporter
+  doc_url: https://metacpan.org/pod/Exporter
+  description: |
+    The Exporter module implements an import method which allows a module to
+    export functions and variables to its users' namespaces. Many modules use
+    Exporter rather than implementing their own import method because Exporter
+    provides a flexible interface with an implementation optimised for the
+    common case.
+  license: GPL-1.0-or-later OR Artistic-1.0-Perl
+  license_family: OTHER
+  license_file:
+    - LICENSE
+  summary: Implements default import method for modules.
