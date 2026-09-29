@@ -11,13 +11,16 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   run_exports:
     - {{ pin_subpackage('perl-exporter', max_pin="x.x") }}
 
 requirements:
-  build:    # [unix]
+  build:
     - make  # [unix]
+    # Needs nmake on windows
+    - {{ stdlib('c') }}   # [win]
+    - {{ compiler('c') }} # [win]
   host:
     - perl {{ perl }}
     - perl-carp 1.50
